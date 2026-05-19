@@ -140,3 +140,16 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('/reports', [ReportController::class, 'index'])->name('reports');
     Route::get('/reports/export', [ReportController::class, 'export'])->name('reports.export');
 });
+
+// Helper route untuk migrasi online (Sementara)
+Route::get('/run-migration', function() {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate:fresh', [
+            '--force' => true,
+            '--seed' => true
+        ]);
+        return "Database successfully migrated and seeded!";
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+});
