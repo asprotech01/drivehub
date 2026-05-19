@@ -23,9 +23,9 @@
                 <h4 class="text-white font-black text-xs uppercase tracking-widest mb-8">Layanan Utama</h4>
                 <ul class="space-y-4">
                     <li><a href="{{ route('catalog.index') }}" class="text-gray-500 hover:text-primary transition-all text-sm font-bold uppercase tracking-wide">Beli Mobil Bekas</a></li>
-                    <li><a href="{{ route('jual-mobil') }}" class="text-gray-500 hover:text-primary transition-all text-sm font-bold uppercase tracking-wide">Jual Mobil Anda</a></li>
-                    <li><a href="#" class="text-gray-500 hover:text-primary transition-all text-sm font-bold uppercase tracking-wide">Estimasi Harga</a></li>
-                    <li><a href="#" class="text-gray-500 hover:text-primary transition-all text-sm font-bold uppercase tracking-wide">Inspeksi Mobil</a></li>
+                    <li><a href="{{ route('why-us') }}" class="text-gray-500 hover:text-primary transition-all text-sm font-bold uppercase tracking-wide">Kenapa DriveHub?</a></li>
+                    <li><a href="{{ route('help') }}" class="text-gray-500 hover:text-primary transition-all text-sm font-bold uppercase tracking-wide">Pusat Bantuan</a></li>
+                    <li><a href="{{ route('faq') }}" class="text-gray-500 hover:text-primary transition-all text-sm font-bold uppercase tracking-wide">Pertanyaan (FAQ)</a></li>
                 </ul>
             </div>
 

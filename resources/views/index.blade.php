@@ -72,11 +72,11 @@
                 <div class="swiper-button-prev"></div>
             </div>
 
-            <!-- Double Tab Section (Beli & Jual) -->
-            <div class="max-w-7xl mx-auto mt-8 relative z-20 bg-white rounded-[48px] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.15)] overflow-hidden border border-gray-50 grid grid-cols-1 lg:grid-cols-3">
+            <!-- Beli Mobil Section -->
+            <div class="max-w-7xl mx-auto mt-8 relative z-20 bg-white rounded-[48px] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.15)] overflow-hidden border border-gray-50">
                 
-                <!-- Left: Beli Mobil (2 Columns) -->
-                <div class="lg:col-span-2 p-8 md:p-12 border-r border-gray-50 flex flex-col">
+                <!-- Beli Mobil -->
+                <div class="p-8 md:p-12 flex flex-col">
                     <div class="flex items-center gap-2 mb-8">
                         <h2 class="text-2xl font-black text-dark uppercase tracking-tight">Beli Mobil</h2>
                         <i class='bx bx-chevron-right text-2xl text-primary'></i>
@@ -155,67 +155,7 @@
                     </div>
                 </div>
 
-                <!-- Right: Jual Mobil Anda -->
-                <div class="p-8 md:p-12 bg-gray-50/50">
-                    <div class="flex items-center gap-2 mb-10">
-                        <h2 class="text-2xl font-black text-dark uppercase tracking-tight">Jual Mobil Anda</h2>
-                        <i class='bx bx-chevron-right text-2xl text-primary'></i>
-                    </div>
 
-                    <div x-data="jualMobilData()" class="space-y-6">
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-1">Pilih Merek Mobil</label>
-                            <select x-model="selectedMerk" @change="updateModels()" class="w-full bg-white border-none rounded-2xl px-6 py-4 text-dark font-bold focus:ring-2 focus:ring-primary/20 transition-all appearance-none shadow-sm">
-                                <option value="">Pilih Merek</option>
-                                <template x-for="(models, merk) in carData" :key="merk">
-                                    <option :value="merk" x-text="merk"></option>
-                                </template>
-                            </select>
-                        </div>
-
-                        <div class="space-y-2">
-                            <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 px-1">Pilih Model Mobil</label>
-                            <select x-model="selectedModel" :disabled="!selectedMerk" class="w-full bg-white border-none rounded-2xl px-6 py-4 text-dark font-bold focus:ring-2 focus:ring-primary/20 transition-all appearance-none shadow-sm disabled:opacity-50">
-                                <option value="">Pilih Model</option>
-                                <template x-for="model in availableModels" :key="model">
-                                    <option :value="model" x-text="model"></option>
-                                </template>
-                            </select>
-                        </div>
-
-                        <button @click="redirectToJual()" class="w-full bg-secondary text-white py-5 rounded-[24px] font-black uppercase tracking-widest text-sm hover:bg-secondaryHover transition-all shadow-xl shadow-secondary/20 flex items-center justify-center gap-3 mt-4">
-                            Mulai Disini
-                        </button>
-                        <p class="text-[9px] text-gray-400 text-center font-medium leading-relaxed">Dengan melanjutkan, saya setuju dengan Kebijakan Privasi & Ketentuan Penggunaan.</p>
-
-                        <!-- Jual Stats (Horizontal & Compact) -->
-                        <div class="grid grid-cols-3 gap-3 pt-6">
-                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-2">
-                                <div class="w-10 h-10 bg-primary/5 text-primary rounded-xl flex items-center justify-center text-xl shrink-0"><i class='bx bx-time-five'></i></div>
-                                <div>
-                                    <h5 class="text-[9px] font-black text-dark uppercase tracking-tight">Inspeksi</h5>
-                                    <p class="text-[8px] text-gray-400 font-bold uppercase mt-0.5">30-45 Menit</p>
-                                </div>
-                            </div>
-                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-2">
-                                <div class="w-10 h-10 bg-primary/5 text-primary rounded-xl flex items-center justify-center text-xl shrink-0"><i class='bx bx-wallet'></i></div>
-                                <div>
-                                    <h5 class="text-[9px] font-black text-dark uppercase tracking-tight">Pembayaran</h5>
-                                    <p class="text-[8px] text-gray-400 font-bold uppercase mt-0.5">Dalam 24 Jam</p>
-                                </div>
-                            </div>
-                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center gap-2">
-                                <div class="w-10 h-10 bg-primary/5 text-primary rounded-xl flex items-center justify-center text-xl shrink-0"><i class='bx bx-check-double'></i></div>
-                                <div>
-                                    <h5 class="text-[9px] font-black text-dark uppercase tracking-tight">Tanpa Repot</h5>
-                                    <p class="text-[8px] text-gray-400 font-bold uppercase mt-0.5">Urus Berkas</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -304,37 +244,7 @@
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
     });
     
-    function jualMobilData() {
-        return {
-            selectedMerk: '',
-            selectedModel: '',
-            availableModels: [],
-            carData: {
-                'Toyota': ['86', 'AGYA', 'ALPHARD', 'ALTIS', 'AVANZA', 'C-HR', 'CALYA', 'CAMRY', 'FORTUNER', 'INNOVA'],
-                'Honda': ['ACCORD', 'BR-V', 'BRIO', 'CITY', 'CIVIC', 'CR-V', 'HR-V', 'JAZZ', 'MOBILIO', 'WR-V'],
-                'Daihatsu': ['AYLA', 'LUXIO', 'ROCKY', 'SIGRA', 'SIRION', 'TERIOS', 'XENIA', 'GRAN MAX'],
-                'Suzuki': ['BALENO', 'ERTIGA', 'IGNIS', 'JIMNY', 'S-CROSS', 'SWIFT', 'XL7', 'KARIMUN'],
-                'Mitsubishi': ['XPANDER', 'PAJERO SPORT', 'OUTLANDER', 'TRITON', 'MIRAGE', 'L300'],
-                'Nissan': ['ELGRAND', 'GRAND LIVINA', 'KICKS', 'MARCH', 'SERENA', 'TERRA', 'X-TRAIL'],
-                'Hyundai': ['CRETA', 'IONIQ 5', 'PALISADE', 'SANTA FE', 'STARGAZER', 'TUCSON'],
-                'Wuling': ['ALMAZ', 'ALMAZ RS', 'ALVEZ', 'AIR EV', 'CONFERO', 'CORTEZ']
-            },
-            updateModels() {
-                this.availableModels = this.selectedMerk ? this.carData[this.selectedMerk] : [];
-                this.selectedModel = '';
-            },
-            redirectToJual() {
-                let url = "{{ route('jual-mobil') }}";
-                if (this.selectedMerk) {
-                    url += "?merk=" + encodeURIComponent(this.selectedMerk);
-                    if (this.selectedModel) {
-                        url += "&model=" + encodeURIComponent(this.selectedModel);
-                    }
-                }
-                window.location.href = url;
-            }
-        }
-    }
+
     
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('navbar');

@@ -24,7 +24,9 @@
             <!-- Desktop Menu -->
             <div class="hidden lg:flex space-x-10 items-center">
                 <a href="{{ route('catalog.index') }}" class="text-sm font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'catalog' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Beli Mobil</a>
-                <a href="{{ route('jual-mobil') }}" class="text-sm font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'jual' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Jual Mobil</a>
+                <a href="{{ route('dealer') }}" class="text-sm font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'dealer' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Dealer Kami</a>
+                <a href="{{ route('contact') }}" class="text-sm font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'contact' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Hubungi Kami</a>
+                {{-- <a href="{{ route('jual-mobil') }}" class="text-sm font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'jual' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Jual Mobil</a> --}}
                 
                 <!-- Dropdown -->
                 <div class="relative group">
@@ -32,10 +34,8 @@
                         Selengkapnya <i class='bx bx-chevron-down transition-transform group-hover:rotate-180'></i>
                     </button>
                     <div class="absolute top-full -left-4 w-48 bg-white shadow-2xl rounded-2xl border border-gray-50 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all mt-2 transform group-hover:translate-y-0 translate-y-2">
-                        <a href="{{ route('dealer') }}" class="block px-4 py-3 text-xs font-bold text-dark hover:bg-gray-50 rounded-xl transition-all">Dealer Kami</a>
                         <a href="{{ route('why-us') }}" class="block px-4 py-3 text-xs font-bold text-dark hover:bg-gray-50 rounded-xl transition-all">Kenapa DriveHub?</a>
                         <a href="{{ route('about') }}" class="block px-4 py-3 text-xs font-bold text-dark hover:bg-gray-50 rounded-xl transition-all">Tentang Kami</a>
-                        <a href="{{ route('contact') }}" class="block px-4 py-3 text-xs font-bold text-dark hover:bg-gray-50 rounded-xl transition-all">Hubungi Kami</a>
                         <a href="{{ route('help') }}" class="block px-4 py-3 text-xs font-bold text-dark hover:bg-gray-50 rounded-xl transition-all border-t border-gray-50 mt-1">Pusat Bantuan</a>
                         <a href="{{ route('faq') }}" class="block px-4 py-3 text-xs font-bold text-dark hover:bg-gray-50 rounded-xl transition-all">Pertanyaan (FAQ)</a>
                     </div>
@@ -74,14 +74,14 @@
             <div class="space-y-4">
                 <p class="text-[10px] font-black uppercase tracking-widest text-gray-400">Main Menu</p>
                 <a href="{{ route('catalog.index') }}" class="block text-xl font-black text-dark">Beli Mobil</a>
-                <a href="{{ route('jual-mobil') }}" class="block text-xl font-black text-dark">Jual Mobil</a>
+                <a href="{{ route('dealer') }}" class="block text-xl font-black text-dark">Dealer Kami</a>
+                <a href="{{ route('contact') }}" class="block text-xl font-black text-dark">Hubungi Kami</a>
+                {{-- <a href="{{ route('jual-mobil') }}" class="block text-xl font-black text-dark">Jual Mobil</a> --}}
             </div>
             <hr class="border-gray-50">
             <div class="space-y-4">
                 <p class="text-[10px] font-black uppercase tracking-widest text-gray-400">Layanan & Info</p>
-                <a href="{{ route('dealer') }}" class="block text-sm font-bold text-gray-600">Dealer Kami</a>
                 <a href="{{ route('about') }}" class="block text-sm font-bold text-gray-600">Tentang Kami</a>
-                <a href="{{ route('contact') }}" class="block text-sm font-bold text-gray-600">Hubungi Kami</a>
                 <a href="{{ route('help') }}" class="block text-sm font-bold text-gray-600 border-t border-gray-50 pt-2">Pusat Bantuan</a>
                 <a href="{{ route('faq') }}" class="block text-sm font-bold text-gray-600">Pertanyaan (FAQ)</a>
             </div>
