@@ -1,78 +1,58 @@
-## Demo
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Check out the live demo: [GitHub Pages Demo](https://mdjamin.github.io/Axom/)
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-# Axom Car Dealership Website
+## About Laravel
 
-Axom is a modern, responsive car dealership website that allows users to browse car categories, view featured cars, and explore additional information about car dealership offers. The site provides a seamless user experience with smooth animations, a user-friendly interface, and a modern dark/light theme toggle. This project includes multiple sections with a variety of cars to explore and offers such as a newsletter subscription for discounts.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## Features
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-- **Home Page:** Displays the introduction and featured products with animations.
-- **Car Categories:** Lists various categories of cars, such as Luxury, Outdoor, Family, and Electric cars.
-- **Featured Cars:** Displays the top picks with prices for each car.
-- **Sign-Up Page:** A page for users to sign up to access more features.
-- **Newsletter Subscription:** Users can subscribe to receive a 15% discount on their next purchase.
-- **Dark/Light Mode Toggle:** Allows users to switch between dark and light themes.
-- **Responsive Design:** The website adjusts its layout for different screen sizes and devices.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Technologies Used
+## Learning Laravel
 
-- **HTML5:** For structuring the web pages.
-- **CSS3:** For styling the web pages, including animations and transitions.
-- **JavaScript:** For interactive functionality, such as theme switching and hamburger menu toggle.
-- **Boxicons:** For icons in the navigation and other sections.
-- **Animate.css:** For adding animations to various elements for a smoother user experience.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-## Installation
+In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-To set up and run this project locally, follow these steps:
+You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
 
-1. Extract the ZIP file.
+## Agentic Development
 
-2. Navigate into the project directory:
-
-   ```bash
-   cd <project-directory>
-   ```
-
-3. Open `index.html` in your browser to view the website.
-
-## File Structure
+Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
 ```bash
-├── Assets
-│   └── Logo
-│   └── Product
-├── Css
-│   └── style.css
-├── Js
-│   └── script.js
-├── index.html
-└── Sign-Up
-    └── Login-Register.html
+composer require laravel/boost --dev
+
+php artisan boost:install
 ```
 
-- `Assets/`: Contains images and logos for the website.
-- `Css/`: Contains the main stylesheet for styling the website.
-- `Js/`: Contains the JavaScript file for interactive functionality.
-- `index.html`: The homepage of the website.
-- `Sign-Up/`: Contains the sign-up page.
+Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
 
 ## Contributing
 
-If you'd like to contribute to this project, feel free to fork the repository and submit a pull request with any improvements or bug fixes. Make sure to follow the standard Git workflow and write clear commit messages.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE).
-
-## Acknowledgements
-
-- [Boxicons](https://boxicons.com/) for the icon library.
-- [Animate.css](https://animate.style/) for the smooth animations.
-- [Swiper.js](https://swiperjs.com/) for carousel functionality.
-
-## Author
-
-Created by **MDJAmin**. Check out more projects on [GitHub](https://github.com/MDJAmin).
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

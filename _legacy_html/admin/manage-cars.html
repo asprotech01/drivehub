@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Mobil - Admin DriveHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { primary: '#1E3A8A', primaryHover: '#1e40af', secondary: '#FBBF24', dark: '#111827', adminBg: '#F3F4F6' }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-adminBg antialiased flex h-screen overflow-hidden">
+
+    <!-- Sidebar Component Start -->
+    <aside class="w-64 bg-dark text-white flex flex-col h-full shrink-0 shadow-xl z-20 transition-all duration-300">
+        <div class="h-20 flex items-center px-6 border-b border-gray-800">
+            <a href="../index.html" class="flex items-center gap-3">
+                <img class="h-8 w-auto bg-white p-1 rounded-md" src="../Assets/Logo/Default_A_logo_0_5df46f22-3df3-4e4f-af8d-a0494a3b3f95_0.png" alt="DriveHub Logo">
+                <span class="font-bold text-xl tracking-tight">DriveHub Admin</span>
+            </a>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto py-6 px-4 space-y-1 custom-scrollbar">
+            <p class="px-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Menu Utama</p>
+            <a href="dashboard.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white font-medium transition-colors mb-1">
+                <i class='bx bx-grid-alt text-xl'></i> Dashboard
+            </a>
+            <a href="manage-cars.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white font-medium mb-1">
+                <i class='bx bx-car text-xl'></i> Kelola Mobil
+            </a>
+            <a href="verify-payment.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white font-medium transition-colors mb-1">
+                <i class='bx bx-wallet text-xl'></i> Verifikasi Pembayaran
+                <span class="ml-auto bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">3</span>
+            </a>
+            <a href="delivery.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white font-medium transition-colors mb-1">
+                <i class='bx bx-paper-plane text-xl'></i> Pengiriman Mobil
+            </a>
+            
+            <p class="px-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 mt-6">Analisis</p>
+            <a href="reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white font-medium transition-colors mb-1">
+                <i class='bx bx-line-chart text-xl'></i> Laporan Transaksi
+            </a>
+        </div>
+    </aside>
+    <!-- Sidebar Component End -->
+
+    <!-- Main Content wrapper -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden">
+        
+        <!-- Header Component Start -->
+        <header class="h-20 bg-white border-b border-gray-200 flex items-center justify-between px-8 shrink-0 z-10 shadow-sm">
+            <div class="flex items-center gap-4">
+                <button class="text-gray-500 hover:text-dark focus:outline-none md:hidden"><i class='bx bx-menu text-3xl'></i></button>
+                <h1 class="text-2xl font-bold text-dark hidden md:block">Kelola Mobil</h1>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center font-bold text-white">AD</div>
+            </div>
+        </header>
+        <!-- Header Component End -->
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto p-8">
+            
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col">
+                <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div class="relative w-full sm:w-96">
+                        <i class='bx bx-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg'></i>
+                        <input type="text" placeholder="Cari berdasarkan nama mobil..." class="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-primary outline-none text-sm transition-colors">
+                    </div>
+                    <button class="w-full sm:w-auto bg-primary text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-primaryHover transition-colors flex items-center justify-center gap-2 shadow-sm">
+                        <i class='bx bx-plus text-xl'></i> Tambah Mobil Baru
+                    </button>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
+                                <th class="px-6 py-4 font-medium">Mobil</th>
+                                <th class="px-6 py-4 font-medium">Harga</th>
+                                <th class="px-6 py-4 font-medium">Stok/Status</th>
+                                <th class="px-6 py-4 font-medium">Tanggal Masuk</th>
+                                <th class="px-6 py-4 font-medium text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y divide-gray-100">
+                            <!-- Row 1 -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <img src="../Assets/Product/Page 1/Section-3/Image (6).jpeg" class="w-16 h-12 object-cover rounded-md shadow-sm">
+                                        <div>
+                                            <div class="font-bold text-dark text-base">Honda CR-V 1.5 Turbo Prestige</div>
+                                            <div class="text-xs text-gray-500">2020 • Automatic • Putih</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-bold text-dark">Rp 485.000.000</td>
+                                <td class="px-6 py-4">
+                                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">Tersedia</span>
+                                </td>
+                                <td class="px-6 py-4 text-gray-600">12 Mei 2026</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center justify-center gap-2">
+                                        <button class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors" title="Edit">
+                                            <i class='bx bx-edit-alt'></i>
+                                        </button>
+                                        <button class="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center hover:bg-red-100 transition-colors" title="Hapus">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2 -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <img src="../Assets/Product/Page 1/Section-3/Image (7).jpeg" class="w-16 h-12 object-cover rounded-md shadow-sm">
+                                        <div>
+                                            <div class="font-bold text-dark text-base">Toyota Camry 2.5 V</div>
+                                            <div class="text-xs text-gray-500">2021 • Automatic • Hitam</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-bold text-dark">Rp 545.000.000</td>
+                                <td class="px-6 py-4">
+                                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-semibold">Di-booking</span>
+                                </td>
+                                <td class="px-6 py-4 text-gray-600">10 Mei 2026</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center justify-center gap-2">
+                                        <button class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors" title="Edit">
+                                            <i class='bx bx-edit-alt'></i>
+                                        </button>
+                                        <button class="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center hover:bg-red-100 transition-colors" title="Hapus">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Row 3 -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <img src="../Assets/Product/Page 1/Section-2/Image (4).jpeg" class="w-16 h-12 object-cover rounded-md shadow-sm">
+                                        <div>
+                                            <div class="font-bold text-dark text-base">BMW 320i Sport</div>
+                                            <div class="text-xs text-gray-500">2022 • Automatic • Putih</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-bold text-dark">Rp 850.000.000</td>
+                                <td class="px-6 py-4">
+                                    <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-semibold">Terjual</span>
+                                </td>
+                                <td class="px-6 py-4 text-gray-600">01 Mei 2026</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center justify-center gap-2">
+                                        <button class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center hover:bg-blue-100 transition-colors" title="Edit">
+                                            <i class='bx bx-edit-alt'></i>
+                                        </button>
+                                        <button class="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center hover:bg-red-100 transition-colors" title="Hapus">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="p-6 border-t border-gray-100 flex justify-between items-center">
+                    <span class="text-sm text-gray-500">Menampilkan 1-3 dari 128 mobil</span>
+                    <div class="flex gap-1">
+                        <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-200 text-gray-500 hover:bg-gray-50"><i class='bx bx-chevron-left'></i></button>
+                        <button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-white font-medium">1</button>
+                        <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-200 text-gray-600 hover:bg-gray-50 font-medium">2</button>
+                        <button class="w-8 h-8 flex items-center justify-center rounded border border-gray-200 text-gray-600 hover:bg-gray-50"><i class='bx bx-chevron-right'></i></button>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
