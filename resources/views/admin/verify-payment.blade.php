@@ -25,13 +25,97 @@
     @forelse($pendingPayments as $payment)
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row overflow-hidden">
         <div class="md:w-1/3 bg-gray-50 p-6 flex flex-col justify-center items-center border-b md:border-b-0 md:border-r border-gray-100">
-            <div class="w-full aspect-[4/3] bg-gray-200 rounded-lg mb-4 overflow-hidden">
-                @if($payment->bukti_pembayaran)
-                    <img src="{{ asset('storage/' . $payment->bukti_pembayaran) }}" class="w-full h-full object-cover">
-                @else
-                    <div class="w-full h-full flex items-center justify-center"><i class='bx bx-image text-4xl text-gray-400'></i></div>
-                @endif
+            <div class="grid grid-cols-1 {{ $payment->tipe_pembayaran === 'DP' ? 'md:grid-cols-2' : '' }} gap-5 mb-4">
+
+    {{-- Bukti Pembayaran --}}
+    <div class="bg-white border border-gray-100 rounded-3xl p-4 shadow-sm">
+
+        <div class="mb-3">
+            <h4 class="text-xs font-black uppercase text-gray-500 tracking-widest leading-tight">
+                Bukti Pembayaran
+            </h4>
+        </div>
+
+        <div class="relative w-full h-64 bg-gray-100 rounded-2xl overflow-hidden group">
+
+            @if($payment->bukti_pembayaran)
+
+                {{-- Gambar --}}
+                <img src="{{ asset('storage/' . $payment->bukti_pembayaran) }}"
+                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                {{-- Overlay Gelap --}}
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
+
+                {{-- Button Tengah --}}
+                <div class="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-all duration-300">
+
+                    <a href="{{ asset('storage/' . $payment->bukti_pembayaran) }}"
+                       target="_blank"
+                       class="px-5 py-3 rounded-2xl bg-black/70 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-2xl">
+                        Lihat Full Size
+                    </a>
+
+                </div>
+
+            @else
+
+                <div class="w-full h-full flex items-center justify-center">
+                    <i class='bx bx-image text-4xl text-gray-400'></i>
+                </div>
+
+            @endif
+
+        </div>
+    </div>
+
+    {{-- Foto KTP hanya untuk DP --}}
+    @if($payment->tipe_pembayaran === 'DP')
+        <div class="bg-white border border-gray-100 rounded-3xl p-4 shadow-sm">
+
+            <div class="mb-3">
+                <h4 class="text-xs font-black uppercase text-gray-500 tracking-widest leading-tight">
+                    Foto KTP
+                </h4>
             </div>
+
+            <div class="relative w-full h-64 bg-gray-100 rounded-2xl overflow-hidden group">
+
+                @if($payment->transaksi->pembeli->foto_ktp ?? false)
+
+                    {{-- Gambar --}}
+                    <img src="{{ asset('storage/' . $payment->transaksi->pembeli->foto_ktp) }}"
+                         class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+
+                    {{-- Overlay Gelap --}}
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"></div>
+
+                    {{-- Button Tengah --}}
+                    <div class="absolute inset-0 flex items-center justify-center z-20 opacity-0 group-hover:opacity-100 transition-all duration-300">
+
+                        <a href="{{ asset('storage/' . $payment->transaksi->pembeli->foto_ktp) }}"
+                           target="_blank"
+                           class="px-5 py-3 rounded-2xl bg-black/70 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-2xl">
+                            Lihat Full Size
+                        </a>
+
+                    </div>
+
+                @else
+
+                    <div class="w-full h-full flex items-center justify-center text-center px-4">
+                        <span class="text-xs text-gray-400 font-semibold">
+                            Foto KTP tidak tersedia
+                        </span>
+                    </div>
+
+                @endif
+
+            </div>
+        </div>
+    @endif
+
+</div>
         </div>
         <div class="md:w-2/3 p-6 flex flex-col justify-between">
             <div>

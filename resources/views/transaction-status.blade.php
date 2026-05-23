@@ -68,13 +68,35 @@
                                         <p class="text-[10px] text-red-400 font-bold uppercase tracking-widest">Batas Waktu: {{ $transaksi->batas_pembayaran ? $transaksi->batas_pembayaran->format('d M Y H:i') : '24 Jam' }}</p>
                                     </div>
                                 @elseif($bookingPayment->status_verifikasi === 'Menunggu Verifikasi')
-                                    <div class="text-center py-6 space-y-4">
-                                        <div class="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-3xl flex items-center justify-center mx-auto text-3xl animate-pulse">
-                                            <i class='bx bx-time-five'></i>
-                                        </div>
-                                        <h3 class="text-2xl font-black text-dark">Verifikasi Booking Fee</h3>
-                                        <p class="text-gray-500 text-sm max-w-md mx-auto leading-relaxed">Bukti transfer Booking Fee Anda telah kami terima dan sedang dalam proses verifikasi oleh admin. Mohon tunggu beberapa saat, kami akan segera memprosesnya.</p>
-                                    </div>
+    <div class="text-center py-6 space-y-4">
+        
+        <div class="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-3xl flex items-center justify-center mx-auto text-3xl animate-pulse">
+            <i class='bx bx-time-five'></i>
+        </div>
+
+        <h3 class="text-2xl font-black text-dark">
+            Verifikasi Booking Fee
+        </h3>
+
+        <p class="text-gray-500 text-sm max-w-md mx-auto leading-relaxed">
+            Bukti transfer Booking Fee Anda telah kami terima dan sedang dalam proses verifikasi oleh admin. Mohon tunggu beberapa saat, kami akan segera memprosesnya.
+        </p>
+
+        <!-- Tombol Pembatalan -->
+        <div class="pt-2">
+            <form action="{{ route('transaction.cancel-booking', $transaksi->id) }}" 
+                  method="POST"
+                  onsubmit="return confirm('Apakah Anda yakin ingin membatalkan booking ini?')">
+                @csrf
+
+                <button type="submit"
+                    class="px-8 py-3 rounded-2xl font-bold border border-red-200 text-red-500 hover:bg-red-50 transition-all">
+                    Batalkan Booking
+                </button>
+            </form>
+        </div>
+
+    </div>
                                 @elseif($bookingPayment->status_verifikasi === 'Tidak Valid')
                                     <div class="text-center space-y-6">
                                         <div class="w-16 h-16 bg-red-100 text-red-600 rounded-3xl flex items-center justify-center mx-auto text-3xl">
@@ -158,6 +180,7 @@
                                                 Upload Ulang Pelunasan <i class='bx bx-upload text-2xl'></i>
                                             </a>
                                         </div>
+
                                     </div>
                                 @endif
 

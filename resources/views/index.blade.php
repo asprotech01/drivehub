@@ -79,7 +79,6 @@
                 <div class="p-8 md:p-12 flex flex-col">
                     <div class="flex items-center gap-2 mb-8">
                         <h2 class="text-2xl font-black text-dark uppercase tracking-tight">Beli Mobil</h2>
-                        <i class='bx bx-chevron-right text-2xl text-primary'></i>
                     </div>
 
                     <form action="{{ route('catalog.index') }}" method="GET" class="relative mb-6">

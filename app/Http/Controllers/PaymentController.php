@@ -34,6 +34,44 @@ class PaymentController extends Controller
         ]);
     }
 
+
+
+    public function cancelBooking($id)
+{
+    $transaksi = Transaksi::with(['pembayarans', 'mobil', 'pembeli'])
+        ->findOrFail($id);
+
+    if ($transaksi->pembeli->user_id !== auth()->id()) {
+        abort(403);
+    }
+
+    $bookingPayment = $transaksi->pembayarans
+        ->where('tipe_pembayaran', 'Booking Fee')
+        ->first();
+
+    if (!$bookingPayment || $bookingPayment->status_verifikasi !== 'Menunggu Verifikasi') {
+        return back()->with('error', 'Booking tidak dapat dibatalkan.');
+    }
+
+    $transaksi->update([
+    'status_transaksi' => 'Dibatalkan'
+]);
+
+$bookingPayment->update([
+    'status_verifikasi' => 'Dibatalkan'
+]);
+
+if ($transaksi->mobil) {
+    $transaksi->mobil->update([
+        'status_mobil' => 'Tersedia'
+    ]);
+}
+
+    return redirect()
+        ->route('transaction.show', $transaksi->id)
+        ->with('success', 'Booking berhasil dibatalkan.');
+}
+
     public function store(Request $request, $transaksiId)
     {
         $transaksi = Transaksi::with('pembeli')

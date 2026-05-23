@@ -78,6 +78,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/transaction/{id}/cancel', [TransactionController::class, 'cancel'])->name('transaction.cancel');
     Route::post('/transaction/{id}/confirm-receipt', [TransactionController::class, 'confirmReceipt'])->name('transaction.confirm-receipt');
     Route::get('/transaction/{id}/kwitansi/{pembayaranId}', [TransactionController::class, 'kwitansi'])->name('transaction.kwitansi');
+    Route::post('/transaction/{id}/cancel-booking', [PaymentController::class, 'cancelBooking'])
+    ->name('transaction.cancel-booking');
 });
 
 // ──────────────────────────────────────────────
