@@ -46,10 +46,14 @@
             <div class="hidden lg:flex items-center space-x-6">
                 @auth
                     <div class="flex items-center gap-4">
-                        <a href="{{ route('transaction.status') }}" class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-primary transition-colors">Pesanan Saya</a>
+                        <span class="text-xs font-semibold text-gray-500 mr-2 flex items-center gap-1.5">
+                            <i class='bx bx-smile text-base text-primary'></i> Halo, <a href="{{ route('profile.index') }}" class="font-black text-dark hover:text-primary transition-colors">{{ Auth::user()->name }}</a>!
+                        </span>
+                        <a href="{{ route('profile.index') }}" class="text-xs font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'profile' ? 'text-primary' : 'text-gray-400 hover:text-primary' }} transition-colors">Profil Saya</a>
+                        <a href="{{ route('transaction.status') }}" class="text-xs font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'transaction' ? 'text-primary' : 'text-gray-400 hover:text-primary' }} transition-colors">Pesanan Saya</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="w-10 h-10 rounded-full bg-gray-100 text-gray-500 hover:text-red-500 transition-all flex items-center justify-center text-xl shadow-sm"><i class='bx bx-log-out'></i></button>
+                            <button type="submit" class="w-10 h-10 rounded-full bg-gray-100 text-gray-500 hover:text-red-500 transition-all flex items-center justify-center text-xl shadow-sm" title="Keluar"><i class='bx bx-log-out'></i></button>
                         </form>
                     </div>
                 @else
@@ -71,6 +75,18 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-50 shadow-2xl overflow-y-auto max-h-[80vh]">
         <div class="px-6 py-8 space-y-6">
+            @auth
+                <!-- Mobile Greeting -->
+                <div class="bg-gray-50 p-4 rounded-2xl flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-black text-sm uppercase">
+                        {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                    </div>
+                    <div>
+                        <div class="text-[9px] font-black text-gray-400 uppercase tracking-wider">Selamat Datang</div>
+                        <div class="text-sm font-bold text-dark">{{ Auth::user()->name }}</div>
+                    </div>
+                </div>
+            @endauth
             <div class="space-y-4">
                 <p class="text-[10px] font-black uppercase tracking-widest text-gray-400">Main Menu</p>
                 <a href="{{ route('catalog.index') }}" class="block text-xl font-black text-dark">Beli Mobil</a>
@@ -87,7 +103,12 @@
             </div>
             <div class="pt-6 grid grid-cols-2 gap-4">
                 @auth
-                    <a href="{{ route('transaction.status') }}" class="col-span-2 text-center bg-primary/10 text-primary py-4 rounded-2xl font-bold">Pesanan Saya</a>
+                    <a href="{{ route('profile.index') }}" class="bg-primary/5 text-primary py-4 rounded-2xl font-bold text-center text-sm">Profil Saya</a>
+                    <a href="{{ route('transaction.status') }}" class="bg-primary text-white py-4 rounded-2xl font-bold text-center text-sm">Pesanan Saya</a>
+                    <form method="POST" action="{{ route('logout') }}" class="col-span-2">
+                        @csrf
+                        <button type="submit" class="w-full bg-red-50 text-red-500 hover:bg-red-100 py-4 rounded-2xl font-bold text-sm transition-colors flex items-center justify-center gap-1.5"><i class='bx bx-log-out text-lg'></i> Keluar</button>
+                    </form>
                 @else
                     <a href="{{ route('login') }}" class="text-center bg-gray-50 text-dark py-4 rounded-2xl font-bold border border-gray-100">Masuk</a>
                     <a href="{{ route('register') }}" class="text-center bg-dark text-white py-4 rounded-2xl font-bold">Daftar</a>

@@ -5,6 +5,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DeliveryController;
@@ -80,6 +81,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/transaction/{id}/kwitansi/{pembayaranId}', [TransactionController::class, 'kwitansi'])->name('transaction.kwitansi');
     Route::post('/transaction/{id}/cancel-booking', [PaymentController::class, 'cancelBooking'])
     ->name('transaction.cancel-booking');
+
+    // Profile
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 // ──────────────────────────────────────────────
