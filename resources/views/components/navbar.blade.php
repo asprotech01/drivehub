@@ -14,24 +14,23 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20 md:h-24">
+        <div class="flex justify-between items-center h-20">
             <!-- Logo -->
-            <a href="{{ route('home') }}" class="flex items-center gap-3 group">
+            <a href="{{ route('home') }}" class="flex items-center gap-3 group shrink-0">
                 <img src="{{ asset('Assets/Logo/logo-dh.png') }}" class="h-10 w-auto group-hover:scale-105 transition-transform" alt="DriveHub Logo">
                 <span class="font-black text-2xl text-dark tracking-tighter uppercase">Drive<span class="text-primary">Hub</span></span>
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden lg:flex space-x-10 items-center">
-                <a href="{{ route('catalog.index') }}" class="text-sm font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'catalog' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Beli Mobil</a>
-                <a href="{{ route('dealer') }}" class="text-sm font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'dealer' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Dealer Kami</a>
-                <a href="{{ route('contact') }}" class="text-sm font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'contact' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Hubungi Kami</a>
-                {{-- <a href="{{ route('jual-mobil') }}" class="text-sm font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'jual' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Jual Mobil</a> --}}
+            <div class="hidden lg:flex space-x-6 items-center">
+                <a href="{{ route('catalog.index') }}" class="text-xs font-bold uppercase tracking-widest whitespace-nowrap {{ ($activePage ?? '') === 'catalog' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Beli Mobil</a>
+                <a href="{{ route('dealer') }}" class="text-xs font-bold uppercase tracking-widest whitespace-nowrap {{ ($activePage ?? '') === 'dealer' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Dealer Kami</a>
+                <a href="{{ route('contact') }}" class="text-xs font-bold uppercase tracking-widest whitespace-nowrap {{ ($activePage ?? '') === 'contact' ? 'text-primary' : 'text-dark hover:text-primary' }} transition-all">Hubungi Kami</a>
                 
                 <!-- Dropdown -->
                 <div class="relative group">
-                    <button class="flex items-center gap-1 text-sm font-bold uppercase tracking-widest text-dark group-hover:text-primary transition-all outline-none">
-                        Selengkapnya <i class='bx bx-chevron-down transition-transform group-hover:rotate-180'></i>
+                    <button class="flex items-center gap-1 text-xs font-bold uppercase tracking-widest whitespace-nowrap text-dark group-hover:text-primary transition-all outline-none">
+                        Selengkapnya <i class='bx bx-chevron-down text-base transition-transform group-hover:rotate-180'></i>
                     </button>
                     <div class="absolute top-full -left-4 w-48 bg-white shadow-2xl rounded-2xl border border-gray-50 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all mt-2 transform group-hover:translate-y-0 translate-y-2">
                         <a href="{{ route('why-us') }}" class="block px-4 py-3 text-xs font-bold text-dark hover:bg-gray-50 rounded-xl transition-all">Kenapa DriveHub?</a>
@@ -43,22 +42,32 @@
             </div>
 
             <!-- Action Buttons -->
-            <div class="hidden lg:flex items-center space-x-6">
+            <div class="hidden lg:flex items-center space-x-4 shrink-0">
                 @auth
                     <div class="flex items-center gap-4">
-                        <span class="text-xs font-semibold text-gray-500 mr-2 flex items-center gap-1.5">
-                            <i class='bx bx-smile text-base text-primary'></i> Halo, <a href="{{ route('profile.index') }}" class="font-black text-dark hover:text-primary transition-colors">{{ Auth::user()->name }}</a>!
+                        <span class="text-xs font-medium text-gray-500 whitespace-nowrap">
+                            Halo, <a href="{{ route('profile.index') }}" class="font-bold text-dark hover:text-primary transition-colors">{{ Auth::user()->name }}</a>!
                         </span>
-                        <a href="{{ route('profile.index') }}" class="text-xs font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'profile' ? 'text-primary' : 'text-gray-400 hover:text-primary' }} transition-colors">Profil Saya</a>
-                        <a href="{{ route('transaction.status') }}" class="text-xs font-bold uppercase tracking-widest {{ ($activePage ?? '') === 'transaction' ? 'text-primary' : 'text-gray-400 hover:text-primary' }} transition-colors">Pesanan Saya</a>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="w-10 h-10 rounded-full bg-gray-100 text-gray-500 hover:text-red-500 transition-all flex items-center justify-center text-xl shadow-sm" title="Keluar"><i class='bx bx-log-out'></i></button>
-                        </form>
+                        <a href="{{ route('transaction.status') }}" class="text-xs font-bold uppercase tracking-widest whitespace-nowrap {{ ($activePage ?? '') === 'transaction' ? 'text-primary' : 'text-gray-400 hover:text-primary' }} transition-colors">Pesanan Saya</a>
+                        
+                        <div class="flex items-center gap-2 border-l border-gray-100 pl-4">
+                            <!-- Logout Button -->
+                            <form method="POST" action="{{ route('logout') }}" class="m-0">
+                                @csrf
+                                <button type="submit" class="w-10 h-10 rounded-full bg-gray-50 text-gray-500 hover:text-red-500 hover:bg-red-50 transition-all flex items-center justify-center text-lg border border-gray-100 shadow-sm" title="Keluar">
+                                    <i class='bx bx-log-out'></i>
+                                </button>
+                            </form>
+                            
+                            <!-- Profile Button (Icon) to the right of Logout -->
+                            <a href="{{ route('profile.index') }}" class="w-10 h-10 rounded-full {{ ($activePage ?? '') === 'profile' ? 'bg-primary text-white shadow-md shadow-primary/20' : 'bg-gray-50 text-gray-600 hover:text-primary hover:bg-blue-50 border border-gray-100' }} transition-all flex items-center justify-center text-lg shadow-sm" title="Profil Saya">
+                                <i class='bx bx-user'></i>
+                            </a>
+                        </div>
                     </div>
                 @else
-                    <button @click="showLogin = true" class="text-sm font-bold uppercase tracking-widest text-dark hover:text-primary transition-colors">Masuk</button>
-                    <button @click="showRegister = true" class="bg-dark text-white px-8 py-3.5 rounded-2xl font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-gray-800 transition-all shadow-xl shadow-gray-200">Daftar</button>
+                    <button @click="showLogin = true" class="text-xs font-bold uppercase tracking-widest text-dark hover:text-primary transition-colors">Masuk</button>
+                    <button @click="showRegister = true" class="bg-dark text-white px-6 py-3 rounded-xl font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-gray-800 transition-all shadow-xl shadow-gray-200">Daftar</button>
                 @endauth
             </div>
 
