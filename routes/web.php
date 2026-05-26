@@ -151,11 +151,20 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 // Helper route untuk migrasi online (Sementara)
 Route::get('/run-migration', function() {
     try {
-        \Illuminate\Support\Facades\Artisan::call('migrate:fresh', [
-            '--force' => true,
-            '--seed' => true
+        // Jika ada parameter ?fresh=true, jalankan migrate:fresh (Hapus semua data)
+        // Jika tidak, jalankan migrate biasa (Aman, tidak menghapus data)
+        if (request()->query('fresh') === 'true') {
+            \Illuminate\Support\Facades\Artisan::call('migrate:fresh', [
+                '--force' => true,
+                '--seed' => true
+            ]);
+            return "Database successfully migrated and seeded (FRESH - Semua data dihapus & diseed ulang)!";
+        }
+
+        \Illuminate\Support\Facades\Artisan::call('migrate', [
+            '--force' => true
         ]);
-        return "Database successfully migrated and seeded!";
+        return "Database successfully migrated (SAFE - Aman, tidak ada data yang hilang)!";
     } catch (\Exception $e) {
         return "Error: " . $e->getMessage();
     }
